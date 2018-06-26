@@ -9,7 +9,6 @@ import Legal from 'screens/Legal';
 import SendRequest from 'screens/SendRequest';
 import CoinInformation from 'screens/CoinInformation';
 import TransactionStatus from 'screens/TransactionStatus';
-import ViewAddress from 'screens/ViewAddress';
 import Authenticate from 'components/Authenticate';
 import Store from 'components/Pin/Store';
 import Menu from './Menu';
@@ -50,14 +49,6 @@ const RouteConfigs = {
         },
         TransactionStatus: {
           screen: TransactionStatus,
-          navigationOptions: navProps =>
-            getNavigationOptions({
-              ...navProps,
-              leftAction: 'cancel',
-            }),
-        },
-        ViewAddress: {
-          screen: ViewAddress,
           navigationOptions: navProps =>
             getNavigationOptions({
               ...navProps,

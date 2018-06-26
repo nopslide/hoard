@@ -13,6 +13,7 @@ import Track from 'screens/Wallet/Track';
 import Import from 'screens/Wallet/Import';
 import Signup from 'screens/Signup';
 import Menu from 'screens/Menu';
+import ViewAddress from 'screens/ViewAddress';
 import { createStackNavigator } from 'react-navigation';
 import { INIT_REQUESTING } from './containers/App/constants';
 import { gradients } from 'styles';
@@ -24,6 +25,7 @@ import {
 } from 'components/Base/Navigation';
 
 export const store = configureStore();
+export let navigatorRef;
 
 const RoutingStack = createStackNavigator(
   {
@@ -66,7 +68,22 @@ const RoutingStack = createStackNavigator(
   }
 );
 
-export let navigatorRef;
+const ModalStack = createStackNavigator({
+  Main: { screen: RoutingStack },
+  ViewAddress: {
+    screen: ViewAddress,
+    navigationOptions: navProps =>
+      getNavigationOptions({
+        ...navProps,
+        leftAction: 'cancel',
+      }),
+  },
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+  cardStyle: { backgroundColor: 'transparent' },
+  transitionConfig: () => ({containerStyle: {backgroundColor: 'transparent'}})
+});
 
 export default class App extends React.Component {
   componentWillMount() {
@@ -96,7 +113,7 @@ export default class App extends React.Component {
           colors={gradients.blue}
           style={styles.container}
         >
-          <RoutingStack ref={this.refDidLoad} />
+          <ModalStack ref={this.refDidLoad} />
         </LinearGradient>
       </Provider>
     );
