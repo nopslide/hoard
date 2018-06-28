@@ -7,6 +7,7 @@ import About from 'screens/About';
 import GetHelp from 'screens/GetHelp';
 import Legal from 'screens/Legal';
 import SendRequest from 'screens/SendRequest';
+import RecipientSelection from 'screens/SendRequest/RecipientSelection';
 import CoinInformation from 'screens/CoinInformation';
 import TransactionStatus from 'screens/TransactionStatus';
 import Authenticate from 'components/Authenticate';
@@ -45,6 +46,15 @@ const RouteConfigs = {
               ...navProps,
               leftAction: 'back',
               title: 'Transfer Funds',
+            }),
+        },
+        RecipientSelection: {
+          screen: RecipientSelection,
+          navigationOptions: navProps =>
+            getNavigationOptions({
+              ...navProps,
+              leftAction: 'back',
+              rightAction: null,
             }),
         },
         TransactionStatus: {

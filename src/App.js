@@ -14,6 +14,10 @@ import Import from 'screens/Wallet/Import';
 import Signup from 'screens/Signup';
 import Menu from 'screens/Menu';
 import ViewAddress from 'screens/ViewAddress';
+import AddressModal from 'screens/SendRequest/AddressModal';
+import QRModal from 'screens/SendRequest/QRModal';
+import ContactModal from 'screens/SendRequest/ContactModal';
+import CurrencyModal from 'screens/SendRequest/CurrencyModal';
 import { createStackNavigator } from 'react-navigation';
 import { INIT_REQUESTING } from './containers/App/constants';
 import { gradients } from 'styles';
@@ -70,13 +74,20 @@ const RoutingStack = createStackNavigator(
 
 const ModalStack = createStackNavigator({
   Main: { screen: RoutingStack },
+  AddressModal: {
+    screen: AddressModal,
+  },
+  ContactModal: {
+    screen: ContactModal,
+  },
+  CurrencyModal: {
+    screen: CurrencyModal,
+  },
+  QRModal: {
+    screen: QRModal,
+  },
   ViewAddress: {
     screen: ViewAddress,
-    navigationOptions: navProps =>
-      getNavigationOptions({
-        ...navProps,
-        leftAction: 'cancel',
-      }),
   },
 }, {
   mode: 'modal',
